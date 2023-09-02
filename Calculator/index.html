@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(19, 18, 18);
+
+        }
+
+        .allbtn {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="calculator">
+        <tr>
+            <td colspan="4"><input type="text" name="Anwers" id="Ans" value=""></td>
+        </tr>
+        <tr>
+            <td colspan="3"><input class="allbtn" type="button" value="AC" onclick="clr()"></td>
+            <td><input class="allbtn" type="button" value="Del"></td>
+        </tr>
+        <tr>
+            <td><input class="allbtn numberfatch" type="button" value="7"></td>
+            <td><input class="allbtn numberfatch" type="button" value="8"></td>
+            <td><input class="allbtn numberfatch" type="button" value="9"></td>
+            <td><input class="allbtn  oprator " type="button" value="+" onclick="kk('+')"></td>
+        </tr>
+        <tr>
+            <td><input class="allbtn numberfatch" type="button" value="4"></td>
+            <td><input class="allbtn numberfatch" type="button" value="5"></td>
+            <td><input class="allbtn numberfatch" type="button" value="6"></td>
+            <td><input class="allbtn  oprator" type="button" value="-" onclick="kk('-')"></td>
+        </tr>
+        <tr>
+            <td><input class="allbtn numberfatch" type="button" value="1"></td>
+            <td><input class="allbtn numberfatch" type="button" value="2"></td>
+            <td><input class="allbtn numberfatch" type="button" value="3"></td>
+            <td><input class="allbtn  oprator" type="button" value="*" onclick="kk('*')"></td>
+        </tr>
+        <tr>
+            <td><input class="allbtn numberfatch" type="button" value="0"></td>
+            <td><input class="allbtn numberfatch oprator" type="button" value="."></td>
+
+            <td colspan="1"><input class="allbtn" type="button" value="=" onclick="solve()"></td>
+
+            <td><input class="allbtn  oprator" type="button" value="%" onclick="kk('%')"></td>
+            <input type="hidden" name="val" id="val">
+            <input type="hidden" name="operator" id="operator">
+        </tr>
+    </table>
+
+    <script>
+
+
+        var divs = document.querySelectorAll('input.numberfatch');
+        divs.forEach(function (div) {
+            div.addEventListener('click', function (e) {
+                var a = document.getElementById("Ans").value += this.value;
+            });
+        });
+
+        function kk(op) {
+            let v = document.getElementById("Ans").value;
+
+            document.getElementById("val").value = v;
+            document.getElementById("operator").value = op;
+            document.getElementById("Ans").value = '';
+        }
+
+        function solve() {
+            let val = document.getElementById("val").value;
+            let oper = document.getElementById("operator").value;
+            let ssecondVal = document.getElementById("Ans").value;
+
+            let frst=parseInt(val);
+            let Scnd=parseInt(ssecondVal);
+
+      
+        let oprand=oper;
+        switch (oprand) {
+            case '+':
+                console.log(frst+Scnd);
+                document.getElementById('Ans').value=frst+Scnd;
+                break;
+            case '-':
+            console.log(frst-Scnd);
+            document.getElementById('Ans').value=frst-Scnd;
+                break;
+            case '*':
+            console.log(frst*Scnd);
+            document.getElementById('Ans').value=frst*Scnd;
+                break;
+            case '%':
+            console.log(frst%Scnd);
+            document.getElementById('Ans').value=frst%Scnd;     
+        }
+    }
+
+        function clr() {
+            document.getElementById("Ans").value = "";
+        }
+
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>
